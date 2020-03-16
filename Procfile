@@ -1,1 +1,1 @@
-worker: python pecky-boy.py
+worker: python pecky-bot.py
