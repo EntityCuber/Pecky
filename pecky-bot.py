@@ -1,5 +1,6 @@
 import requests
 import discord
+import duckduckgo
 import wikipedia
 import json
 import os
@@ -68,12 +69,12 @@ async def on_message(message):
 
         # reply for help
         if (message.content.replace(' ','')=='Peckyhelp' or message.content == 'help'):
-          reply = 'Commands: ?w <question> - wikipedia result'
+          reply = '```Commands:\n?w <question> - wikipedia result\n?d <question - duckduckgo result ```'
           replyBot = 'Helper'
           
 
         # if ? is content start it uses wikipedia instead of bot api for reply
-        elif (message.content.replace(' ','').startswith('Pecky?w') or message.content.startswith('?')):
+        elif (message.content.replace(' ','').startswith('Pecky?w') or message.content.startswith('?w')):
           message.content = message.content.replace('?w','',1) # removes '?w'
           message.content = message.content.replace('Pecky','',1) # removes '?w'
           message.content = message.content.strip()
@@ -87,6 +88,21 @@ async def on_message(message):
               reply = "wikipedia: sorry cant find results or there is an error"
 
           replyBot = 'Wiki'
+
+        elif (message.content.replace(' ','').startswith('Pecky?d') or message.content.startswith('?d')):
+          message.content = message.content.replace('?d','',1) # removes '?d'
+          message.content = message.content.replace('Pecky','',1) # removes '?d'
+          message.content = message.content.strip()
+          try:
+            reply = wikipedia.summary(message.content,2)
+            reply = f'DuckDuckGo: {reply}'
+          except Exception as err:
+            print(f'Error occured(discord): {err}')
+
+          if (not reply):
+              reply = "discord: sorry cant find results or there is an error"
+
+          replyBot = 'DuckDuckGo'
 
         else:
           # chat bot api setup
