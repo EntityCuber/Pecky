@@ -71,7 +71,12 @@ async def on_message(message):
         # if ? is content start it uses wikipedia instead of bot api for reply
         elif (message.content.replace(' ','').startswith('Pecky?w') or message.content.startswith('?')):
           message.content = message.content.replace('?w','',1) # removes '?w'
-          reply = wikipedia.summary(message.content,2)
+          message.content = message.content.replace('Pecky','',1) # removes '?w'
+          message.content = message.content.strip()
+          try:
+            reply = wikipedia.summary(message.content,2)
+          except Exception as err:
+            print(f'Error occured: {err}')
 
           if (reply == ''):
               reply = "Sorry i can't find the result"
