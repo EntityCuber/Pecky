@@ -54,6 +54,9 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
+  # variable
+  reply = ''
+  # Trigger only when user message
   if message.author != client.user:
     # Respond only when user DM or user mention with @Pecky
     if (engageCondition(message)):
@@ -61,6 +64,7 @@ async def on_message(message):
         # Replace @Pecky discord mention variable to Pecky
         message.content = message.content.replace('<@!555643509311406101>', 'Pecky')
         message.content = message.content.replace('<@555643509311406101>', 'Pecky')
+
 
         # reply for help
         if (message.content.replace(' ','')=='Peckyhelp' or message.content == 'help'):
@@ -75,11 +79,12 @@ async def on_message(message):
           message.content = message.content.strip()
           try:
             reply = wikipedia.summary(message.content,2)
+            reply = f'wikipedia:{reply}'
           except Exception as err:
             print(f'Error occured(wiki): {err}')
 
-          if (reply == ''):
-              reply = "Sorry i can't find the result"
+          if (not reply):
+              reply = "wikipedia: sorry cant find or there is a internal error"
 
           replyBot = 'Wiki'
 
