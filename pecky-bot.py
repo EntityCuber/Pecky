@@ -72,6 +72,10 @@ async def on_message(message):
         elif (message.content.replace(' ','').startswith('Pecky?w') or message.content.startswith('?')):
           message.content = message.content.replace('?w','',1) # removes '?w'
           reply = wikipedia.summary(message.content,2)
+
+          if (reply == ''):
+              reply = "Sorry i can't find the result"
+
           replyBot = 'Wiki'
 
         else:
