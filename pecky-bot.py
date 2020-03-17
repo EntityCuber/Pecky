@@ -69,7 +69,7 @@ async def on_message(message):
 
         # reply for help
         if (message.content.replace(' ','')=='Peckyhelp' or message.content == 'help'):
-          reply = '```Commands:\n?w <question> - wikipedia result\n?d <question - duckduckgo result ```'
+          reply = '```Commands:\n?w <question> - wikipedia result\n?d <question> - duckduckgo result ```'
           replyBot = 'Helper'
           
 
@@ -100,7 +100,7 @@ async def on_message(message):
             print(f'Error occured(discord): {err}')
 
           if (not reply):
-              reply = "discord: sorry cant find results or there is an error"
+              reply = "DuckDuckGo: sorry cant find results or there is an error"
 
           replyBot = 'DuckDuckGo'
 
