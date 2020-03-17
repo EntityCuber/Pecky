@@ -76,7 +76,7 @@ async def on_message(message):
           try:
             reply = wikipedia.summary(message.content,2)
           except Exception as err:
-            print(f'Error occured: {err}')
+            print(f'Error occured(wiki): {err}')
 
           if (reply == ''):
               reply = "Sorry i can't find the result"
