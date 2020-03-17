@@ -84,7 +84,7 @@ async def on_message(message):
             print(f'Error occured(wiki): {err}')
 
           if (not reply):
-              reply = "wikipedia: sorry cant find or there is a internal error"
+              reply = "wikipedia: sorry cant find results or there is an error"
 
           replyBot = 'Wiki'
 
