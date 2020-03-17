@@ -79,7 +79,7 @@ async def on_message(message):
           message.content = message.content.strip()
           try:
             reply = wikipedia.summary(message.content,2)
-            reply = f'wikipedia:{reply}'
+            reply = f'wikipedia: {reply}'
           except Exception as err:
             print(f'Error occured(wiki): {err}')
 
