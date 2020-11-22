@@ -13,7 +13,7 @@ hidden = 0
 botUrl = os.environ.get('botUrl')
 token = os.environ.get('token')
 apiKey = os.environ.get('apiKey')
-filter_words = '@gmail.com'
+filter_word = '@gmail.com'
 
 authorTemp = 'x'
 
