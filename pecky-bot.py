@@ -13,6 +13,7 @@ hidden = 0
 botUrl = os.environ.get('botUrl')
 token = os.environ.get('token')
 apiKey = os.environ.get('apiKey')
+filter_words = '@gmail.com'
 
 authorTemp = 'x'
 
@@ -109,8 +110,13 @@ async def on_message(message):
           params = setParams(message)
           response = requests.get(botUrl, params=params)
           reply = json.loads(response.content.decode('utf-8'))['cnt']
+          
+          if (filter_word in reply):
+            print(f'{Fore.YELLOW}Filtered:{Fore.RESET} {reply}')
+            reply = 'bah....'
+          
           replyBot = 'Pecky'
-        
+          
         # check Stop sending reply to discord
         if (not hidden):
           await message.channel.send(reply)
